@@ -1,0 +1,21 @@
+2025-03-02 19:06:05 WARNING:Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-03-02 19:06:05 INFO:Loaded DL model from models/saved_models/best_lstm_model.h5
+2025-03-02 19:06:05 INFO:Loaded scaler from models/saved_models/lstm_scaler.pkl
+2025-03-02 19:06:05 ERROR:An error occurred: [Errno 2] No such file or directory: 'models/saved_models/lstm_training_columns.pkl'
+2025-03-02 19:06:05 INFO:MetaTrader 5 shutdown completed.
+2025-03-02 19:07:44 ERROR:An error occurred: name 'columns_path' is not defined
+2025-03-02 19:07:44 INFO:MetaTrader 5 shutdown completed.
+2025-03-02 19:08:21 WARNING:Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-03-02 19:08:21 INFO:Loaded DL model from models/saved_models/best_lstm_model.h5
+2025-03-02 19:08:21 INFO:Loaded scaler from models/saved_models/lstm_scaler.pkl
+2025-03-02 19:08:21 INFO:Using hardcoded training_columns. Ensure they match your training pipeline.
+2025-03-02 19:08:21 INFO:Loaded final pipeline for EURUSD
+2025-03-02 19:08:21 INFO:Checking market status...
+2025-03-02 19:08:21 INFO:Market is closed. No actions performed.
+2025-03-02 19:09:29 WARNING:Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-03-02 19:09:29 INFO:Loaded DL model from models/saved_models/best_lstm_model.h5
+2025-03-02 19:09:29 INFO:Loaded scaler from models/saved_models/lstm_scaler.pkl
+2025-03-02 19:09:29 INFO:Using hardcoded training_columns. Ensure they match your training pipeline.
+2025-03-02 19:09:29 INFO:Loaded final pipeline for BTCUSD
+2025-03-02 19:09:29 INFO:Checking market status...
+2025-03-02 19:09:29 INFO:Market is closed. No actions performed.
