@@ -1,4 +1,5 @@
-# AlphaFlow ML & DL Trading Bot Project
+# AlphaFlow-MT5-ML-DL-Trading-Lab
+## Multi-strategy MT5 research lab for ML/DL/time-series trading: data → modeling → backtests → tuning → prototype execution.
 
 A comprehensive **machine learning and deep learning trading framework** that covers the entire workflow:
 
