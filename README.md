@@ -1,5 +1,4 @@
-# AlphaFlow-MT5-ML-DL-Trading-Lab
-## Multi-strategy MT5 research lab for ML/DL/time-series trading: data → modeling → backtests → tuning → prototype execution.
+# AlphaFlow ML & DL Trading Bot Project
 
 A comprehensive **machine learning and deep learning trading framework** that covers the entire workflow:
 
@@ -42,49 +41,61 @@ This project provides a flexible **template** for you to **create and add your o
 
 ## Repository Structure
 ```bash
-# ML Bot Trading Repository Structure
+# AlphaFlow ML & DL Trading Bot Repository Structure
 
-ml_bot_trading/
+AlphaFlow-MT5-ML-DL-Trading-Lab/
 ├── data/
-│   ├── data_loader.py  # MetaTrader 5 data retrieval
+│   ├── data_loader.py              # MetaTrader 5 data retrieval
 │
 ├── features/
-│   ├── feature_engineering.py  # Technical indicators, custom features
-│   ├── labeling.py  # Labeling methods: next-bar, multi-bar, double-barrier, regime detection
+│   ├── feature_engineering.py      # Technical indicators, stationarity checks, custom features
+│   ├── labeling_schemes.py         # Labeling methods: next-bar, multi-bar, double-barrier, regime detection
 │
 ├── models/
-│   ├── model_training.py  # Model selection, hyperparam tuning
-│   ├── saved_models/  # Folder for .pkl pipelines (best_rf_pipeline.pkl, etc.)
+│   ├── model_training.py           # Model selection, hyperparameter tuning (Optuna, GridSearchCV)
+│   ├── saved_models/               # Folder for saved model pipelines (.pkl, .joblib)
 │
 ├── backtests/
-│   ├── simple_backtest.py  # Simple Pythonic backtest logic
-│   ├── vectorbt_backtest.py  # VectorBT-based backtesting template
+│   ├── simple_backtest.py          # Simple event-driven backtest logic
+│   ├── vectorbt_backtest.py        # VectorBT-based backtesting template
 │
 ├── live_trading/
-│   ├── regression_returns.py  # Live trading script for regression returns
-│   ├── multi_bar.py  # Live trading script for multi-bar classification
-│   ├── double_barrier.py  # Live trading script for double-barrier labeling
-│   ├── regime_detection.py  # Live trading script for regime detection
+│   ├── ... (live trading scripts)
 │
 ├── notebooks/
-│   ├── dl_notebooks/
-│   │   ├── 00_eda_visualization.ipynb
-│   │   ├── 01_backtests_regression_returns_dl.ipynb
-│   │   ├── 01_live_trading_regression_returns_dl.ipynb
-│   │   ├── 02_time_series_arima_sarima_var_lstmprice.ipynb
-│   │
-│   ├── eda_notebooks/
-│   │   ├── 00_eda_visualization.ipynb
-│   │
-│   ├── ml_notebooks/
-│   │   ├── 01_backtests_regression_returns.ipynb
-│   │   ├── 01_live_trading_regression_returns.ipynb
-│   │   ├── 02_backtests_multi_bar_classification.ipynb
-│   │   ├── 02_live_trading_multi_bar_classification.ipynb
-│   │   ├── 03_backtests_double_barrier_labeling.ipynb
-│   │   ├── 03_live_trading_double_barrier_labeling.ipynb
-│   │   ├── 04_backtests_regime_detection.ipynb
-│   │   ├── 04_live_trading_regime_detection.ipynb
+│   ├── exploratory/
+│   │   ├── eda_visualization.ipynb
+│   │   ├── integrated_pipeline_pair_trading.ipynb
+│   │   └── kalman_filters_solution.ipynb
+│   ├── strategies/
+│   │   ├── ml/
+│   │   │   ├── backtesting/
+│   │   │   │   ├── regression_returns.ipynb
+│   │   │   │   ├── double_barrier_labeling.ipynb
+│   │   │   │   ├── multi_bar_classification.ipynb
+│   │   │   │   ├── multi_bar_classification_multisymbol.ipynb
+│   │   │   │   ├── multi_bar_classification_multisymbol_core_features.ipynb
+│   │   │   │   ├── multi_bar_classification_multisymbol_core_features_stocks.ipynb
+│   │   │   │   ├── regime_detection.ipynb
+│   │   │   │   ├── momentum_strategy.ipynb
+│   │   │   │   ├── pairs_trading_cointegration.ipynb
+│   │   │   │   └── pairs_trading_clustering.ipynb
+│   │   │   └── live_trading/
+│   │   │       ├── regression_returns.ipynb
+│   │   │       ├── double_barrier_labeling.ipynb
+│   │   │       ├── multi_bar_classification.ipynb
+│   │   │       ├── multi_bar_classification_multisymbol_core_features.ipynb
+│   │   │       ├── regime_detection.ipynb
+│   │   │       ├── pairs_trading_cointegration.ipynb
+│   │   │       └── pairs_trading_clustering.ipynb
+│   │   └── dl/
+│   │       ├── backtesting/
+│   │       │   ├── regression_returns.ipynb
+│   │       │   └── multi_bar_classification_multisymbol.ipynb
+│   │       └── live_trading/
+│   │           └── regression_returns.ipynb
+│   └── time_series/
+│       └── arima_sarima_var_lstm.ipynb
 │
 ├── requirements.txt
 ├── README.md
