@@ -10,11 +10,14 @@ A comprehensive **machine learning and deep learning trading framework** that co
 6. **Backtesting** (VectorBT or simple custom code)
 7. **Live trading** integration with MetaTrader 5
 
-### Supported Labeling Strategies:
+### Supported Strategies:
 - **Regression** on next-bar returns
 - **Multi-bar classification**
 - **Double-barrier labeling** (López de Prado style)
 - **Regime detection** (simple up/down/sideways approach)
+- **Momentum Strategy**
+- **Pairs Trading (Cointegration)**
+- **Pairs Trading (Clustering)**
 
 This project provides a flexible **template** for you to **create and add your own** custom labeling functions or feature engineering steps, allowing you to experiment with new ideas and strategies.
 
