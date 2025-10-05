@@ -1,5 +1,7 @@
 # AlphaFlow ML & DL Trading Bot Project
 
+## Multi-strategy MT5 research lab for ML/DL/time-series trading: data → modeling → backtests → tuning → prototype execution.
+
 A comprehensive **machine learning and deep learning trading framework** that covers the entire workflow:
 
 1. **Data loading** from MetaTrader 5
@@ -15,6 +17,7 @@ A comprehensive **machine learning and deep learning trading framework** that co
 - **Multi-bar classification**
 - **Double-barrier labeling** (López de Prado style)
 - **Regime detection** (simple up/down/sideways approach)
+- **Volatility-based labeling**
 - **Momentum Strategy**
 - **Pairs Trading (Cointegration)**
 - **Pairs Trading (Clustering)**
@@ -36,7 +39,7 @@ This project provides a flexible **template** for you to **create and add your o
 ## Features
 - **MetaTrader 5** data retrieval (`data_loader.py`)
 - **TA** library for feature engineering (`ta.add_all_ta_features`)
-- Multiple **labeling methods**: next-bar, multi-bar, double-barrier, regime detection, etc.
+- Multiple **labeling methods**: next-bar, multi-bar, double-barrier, regime detection, volatility-based etc.
 - **Time-based** or **walk-forward** cross-validation to avoid data leakage
 - **RandomizedSearchCV** or **GridSearchCV** for hyperparameter tuning
 - **VectorBT** or custom backtesting scripts for performance evaluation
@@ -52,7 +55,7 @@ AlphaFlow-MT5-ML-DL-Trading-Lab/
 │
 ├── features/
 │   ├── feature_engineering.py      # Technical indicators, stationarity checks, custom features
-│   ├── labeling_schemes.py         # Labeling methods: next-bar, multi-bar, double-barrier, regime detection
+│   ├── labeling_schemes.py         # Labeling methods: next-bar, multi-bar, double-barrier, regime detection, volatility-based
 │
 ├── models/
 │   ├── model_training.py           # Model selection, hyperparameter tuning (Optuna, GridSearchCV)
@@ -100,7 +103,8 @@ AlphaFlow-MT5-ML-DL-Trading-Lab/
 │   └── time_series/
 │       └── arima_sarima_var_lstm.ipynb
 │
-├── requirements.txt
+├── pyproject.toml
+├── uv.lock
 ├── README.md
 ```
 
@@ -108,8 +112,8 @@ AlphaFlow-MT5-ML-DL-Trading-Lab/
 
 ### 1. Clone this repository:
 ```bash
-git clone https://github.com/maghdam/AlphaFlow-Trading-Bot.git
-cd ml_bot_trading
+git clone https://github.com/maghdam/AlphaFlow-MT5-ML-DL-Trading-Lab.git
+cd AlphaFlow-MT5-ML-DL-Trading-Lab
 ```
 
 ### 2. Create and activate a Python environment (conda or venv):
@@ -118,9 +122,10 @@ conda create -n ml_trading python>=3.9
 conda activate ml_trading
 ```
 
-### 3. Install dependencies:
+### 3. Install dependencies with uv:
 ```bash
-pip install -r requirements.txt
+pip install uv
+uv pip sync pyproject.toml
 ```
 - Make sure you have **MetaTrader5** installed [IC Markets MT5](https://www.icmarkets.com/global/en/forex-trading-platform-metatrader/metatrader-5).
 
@@ -162,11 +167,12 @@ pip install jupyter
 ## Key Modules
 - **`data/data_loader.py`**: Connects to MetaTrader 5, fetches bars with `copy_rates_from_pos`.
 - **`features/feature_engineering.py`**: Uses the **TA** library and additional custom features (spreads, autocorrelation, etc.).
-- **`features/labeling.py`**:
+- **`features/labeling_schemes.py`**:
   - `calculate_future_return(...)`
   - `create_labels_multi_bar(...)`
   - `create_labels_double_barrier(...)`
   - `create_labels_regime_detection(...)`
+  - `create_labels_volatility(...)`
 - **`models/model_training.py`**:
   - `select_features_rf_reg(...)`
   - Time-based splits, random/grid search for hyperparams.
@@ -176,7 +182,7 @@ pip install jupyter
   - Each script loads a pipeline (`.pkl`), connects to MT5, and places trades based on predictions.
 
 ## Extending the Project
-- **Add your own label**: Create a new function in `features/labeling.py` (e.g. `create_labels_custom(...)` that returns a new column with `[-1, 0, +1]` (or your custom classes)).
+- **Add your own label**: Create a new function in `features/labeling_schemes.py` (e.g. `create_labels_custom(...)` that returns a new column with `[-1, 0, +1]` (or your custom classes)).
 - **Add your own features**: Implement them in `features/feature_engineering.py` or create a new file.
 - **Train a new model**: Adapt `models/model_training.py` or your notebooks to handle new classifiers/regressors.
 - **Explore new backtest approaches**: Either integrate with `vectorbt` in a notebook or write a custom `.py` in `backtests/`.
@@ -235,7 +241,3 @@ dtype: object
 ```
 
 ![Fold 1 Performance](images/backtest.png)
-
-
-
-
